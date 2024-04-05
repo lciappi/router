@@ -61,7 +61,7 @@ unsigned int hostname_to_ipaddr(const char *s) {
  */
 void dump(char dir, int interface, void *pkt, int len) {
     ipheader *sipHeader = (ipheader *) pkt;
-    logLog("packet", "%c [%d] %s payload %d bytes", dir, interface, ipHdrToString(sipHeader), len - sizeof(ipheader));
+    // logLog("packet", "%c [%d] %s payload %d bytes", dir, interface, ipHdrToString(sipHeader), len - sizeof(ipheader));
     fflush(stdout);
 }
 
