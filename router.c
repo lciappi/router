@@ -108,7 +108,6 @@ void run() {
         }
 
         ipheader *header = (ipheader *) &pkt;
-
         unsigned short checksum = ipchecksum(header, sizeof(ipheader));
 
         if (checksum != 0) {
@@ -116,15 +115,15 @@ void run() {
             continue;
         }
 
-
         if (header->ttl <= 1) {
             printf("SKIPPING PACKET: TTL is %d \n", header->ttl);
             continue;
         }
-        header->ttl = header->ttl - 1;
 
+        header->ttl = header->ttl - 1;
         header->checksum = 0;
         header->checksum = ipchecksum(header, sizeof(ipheader));
+
         int fwinterface = getDestinationInterface(header->dstipaddr);
 
         if (fwinterface == interface){
